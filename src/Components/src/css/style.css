@@ -1,0 +1,9 @@
+h1{
+    padding: 10px ;
+    text-align: center;
+}
+
+.primary{
+    background-color: black;
+    color:green;
+}
