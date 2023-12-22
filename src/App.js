@@ -798,29 +798,129 @@ export default function App() {
 
 // UseMemo same as pureComponent but use different methods for use
 
-import React, { useState, useMemo } from 'react'
+// import React, { useState, useMemo } from 'react'
+
+// export default function App() {
+//   const [count, setcount] = useState(0);
+//   const [item, setItem] = useState(10);
+
+//   // How to Create usememo
+//   const updateCountRelate = useMemo(() => {
+//     console.log("useMemo call");
+//     return count * 10;
+//   }, [count]);
+//   return (
+//     <>
+//       <h1>UseMemo Hook in React : </h1>
+//       <h1>count : {count}</h1>
+//       <h1>item : {item}</h1>
+//       <h1>{updateCountRelate}</h1>
+//       <button onClick={() => setcount(count + 1)}>Update Count</button>
+//       <button onClick={() => setItem(item + 1)}>Update item</button>
+//     </>
+//   )
+// }
+
+
+/* Ref in React js */
+// why use ref : using Ref get DOM and Modify DOM
+// import React, { Component, createRef } from 'react'
+
+// export default class App extends Component {
+//   constructor() {
+//     super();
+//     this.myCustomRef = createRef();
+//   }
+//   componentDidMount() {
+//     // console.log(this.myCustomRef);
+//     // console.log(this.myCustomRef.current.value=10000);
+//   }
+
+//   getVal() {
+//     // console.log(this.myCustomRef);
+//     console.log(this.myCustomRef.current.value);
+//     this.myCustomRef.current.style.backgroundColor = "red";
+//   }
+
+//   render() {
+//     return (
+//       <>
+//         <h1>Ref in React</h1>
+//         <input type='text' ref={this.myCustomRef} />
+//         <button onClick={() => { this.getVal() }}>Check Ref</button>
+//       </>
+//     )
+//   }
+// }
+
+/* useRef Hook In React */
+// useRef and Ref are same but they are used in different places.
+
+// import React, { useRef } from 'react'
+
+// export default function App() {
+
+//   let myCustomRef = useRef(null);
+
+//   function getVal() {
+//     console.log(myCustomRef);
+//     // console.log(myCustomRef.current.value);
+//     console.log(myCustomRef.current.value = 100);
+//     myCustomRef.current.focus();
+//   }
+
+
+//   return (
+//     <>
+//       <h1>useRef in React</h1>
+//       <input type='text' ref={myCustomRef} />
+//       <button onClick={() => getVal()}>Check Ref</button>
+//     </>
+//   )
+// }
+
+
+
+/* forwardRef in React  */
+// forwardRef is advance version of Ref
+// ref send as props parend to child called is forwardRef
+
+// import React, { useRef } from 'react'
+// import User4 from './Components/User4';
+
+// export default function App() {
+//   let myCustomRef = useRef(null);
+//   function updateInput() {
+//     myCustomRef.current.value = "1000";
+//     myCustomRef.current.focus();
+//   }
+//   return (
+//     <>
+//       <h1>forwardRef in React</h1>
+//       <User4 ref={myCustomRef} />
+//       <button onClick={() => { updateInput() }}>Update input box</button>
+//     </>
+//   )
+// }
+
+
+/* Controlled Component */
+
+// Creted Component using State this is controlled Component
+
+import React, { useState } from 'react'
 
 export default function App() {
-  const [count, setcount] = useState(0);
-  const [item, setItem] = useState(10);
+  const [name, setName] = useState("John Doe");
+  const [email, setEmail] = useState("san");
 
-  // How to Create usememo
-  const updateCountRelate = useMemo(() => {
-    console.log("useMemo call");
-    return count * 10;
-  }, [count]);
   return (
     <>
-      <h1>UseMemo Hook in React : </h1>
-      <h1>count : {count}</h1>
-      <h1>item : {item}</h1>
-      <h1>{updateCountRelate}</h1>
-      <button onClick={() => setcount(count + 1)}>Update Count</button>
-      <button onClick={() => setItem(item + 1)}>Update item</button>
+      <h1>Controlled Component</h1>
+      <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
+      <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+      <button onClick={() => { console.log(name); console.log(email) }}>Print</button>
     </>
   )
 }
-
-
-
 
