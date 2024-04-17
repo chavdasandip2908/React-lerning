@@ -907,20 +907,111 @@ export default function App() {
 /* Controlled Component */
 
 // Creted Component using State this is controlled Component
+// handle with State 
 
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
-export default function App() {
-  const [name, setName] = useState("John Doe");
-  const [email, setEmail] = useState("san");
+// export default function App() {
+//   const [name, setName] = useState("John Doe");
+//   const [email, setEmail] = useState("san");
 
+//   return (
+//     <>
+//       <h1>Controlled Component</h1>
+//       <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
+//       <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+//       <button onClick={() => { console.log(name); console.log(email) }}>Print</button>
+//     </>
+//   )
+// }
+
+/* Uncontrolled Component */
+// it mean input field intreck with javaScript or Ref Handle
+// import React, { useRef } from 'react'
+
+// export default function App() {
+//   let inputRef = useRef(null);
+//   let inputRef2 = useRef(null);
+//   function submitForm(e) {
+//     e.preventDefault();
+//     console.log("1.input field value : ", inputRef.current.value);
+//     console.log("2.input field value : ", inputRef2.current.value);
+//     let input3 = document.getElementById('input3').value;
+//     console.log("3.input field value : ", input3);
+
+//   }
+//   return (
+//     <>
+//       <form>
+//         <h1>Controlled Component</h1>
+//         <input ref={inputRef} type='text' />
+//         <input ref={inputRef2} type='email' />
+//         <input id='input3' type='email' />
+//         <button type='submit' onClick={(e) => { submitForm(e) }}>submit</button>
+//       </form>
+//     </>
+//   )
+// }
+
+/* Simple HOC(Hight order component) */
+// HOC is One Component input and Return Component
+
+// import React, { useState, useRef } from 'react'
+
+// export default function App() {
+//   return (
+//     <>
+//       <h1>Simple HOC</h1>
+//       <HOCRed Cmp={Counter} />
+//       <HOCGreen Cmp={Counter} />
+//     </>
+//   )
+// }
+
+
+// function HOCRed(Props) {
+//   return (
+//     <div style={{ background: "red", width: "200px" }}>
+//       <Props.Cmp />
+//     </div>
+//   )
+// }
+// function HOCGreen(Props) {
+//   return (
+//     <div style={{ background: "green", width: "200px" }}>
+//       <Props.Cmp />
+//     </div>
+//   )
+// }
+// function Counter() {
+//   const [count, setcount] = useState(0);
+//   return (
+//     <>
+//       <h3>Count: {count}</h3>
+//       <button onClick={() => setcount(count + 1)}>Update</button>
+//     </>
+//   )
+// }
+
+
+// ---------------------------------------------> React Router <----------------------------------------------------------------
+
+import React from 'react'
+import Home from "./Components/Router/Home";
+import About from "./Components/Router/About";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+function App() {
   return (
-    <>
-      <h1>Controlled Component</h1>
-      <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
-      <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-      <button onClick={() => { console.log(name); console.log(email) }}>Print</button>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
+
+export default App
+
 
