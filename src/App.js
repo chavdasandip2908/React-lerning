@@ -999,19 +999,36 @@ export default function App() {
 import React from 'react'
 import Home from "./Components/Router/Home";
 import About from "./Components/Router/About";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import NavBar from './Components/Router/NavBar';
+import PageNotFound from './Components/Router/PageNotFound';
+import User from './Components/Router/User';
+import SearchParamas from './Components/Router/SearchParamas';
 
 function App() {
   return (
     <BrowserRouter>
+      <NavBar /> 
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
+        {/* <Route path="/*" element={<PageNotFound />}></Route> */}
+        {/* or re-direact */}
+        <Route path="/*" element={<Navigate to="/" />}></Route>
+        {/* how to use params in react */}
+        <Route path="/user/:name" element={<User/>}></Route>
+        <Route path="/filter" element={<SearchParamas/>}></Route>
       </Routes>
+      {/* <NavBar /> */}
     </BrowserRouter>
   )
 }
-
 export default App
+
+
+/* searchParamas Hook  */
+// searchParamas is query parameter 
+
+
 
 
