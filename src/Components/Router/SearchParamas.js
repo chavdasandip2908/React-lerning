@@ -12,6 +12,8 @@ const SearchParamas = () => {
     setSearchParama({ age: age, city: city });
   }
 
+// searchParamas means query Parameter
+
   return (
     <div>
       <h3>your age is {searchParama.get("age")}</h3>

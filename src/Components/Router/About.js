@@ -6,8 +6,9 @@ function About() {
     <div>
       About page
       <br/>
-      <Link to='/user/abc'>abc</Link> <br />
-      <Link to='/user/anil'>anil</Link>
+      {/* how to pass state in useLocation Hook */}
+      <Link to='/user/abc' state={{name:"abc",age:"20"}}>abc</Link> <br />
+      <Link to='/user/anil'state={{name:"anil",age:"21"}}>anil</Link>
     </div>
   )
 }

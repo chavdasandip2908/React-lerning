@@ -12,6 +12,8 @@ function NavBar() {
                 style={({ isActive }) => { return { color: isActive ? "red" : "skyblue" } }} to='/about'>About</NavLink>
             <NavLink
                 style={({ isActive }) => { return { color: isActive ? "red" : "skyblue" } }} to='/filter'>filter</NavLink>
+            <NavLink
+                style={({ isActive }) => { return { color: isActive ? "red" : "skyblue" } }} to='/login'>Login</NavLink>
         </div>
     )
 }

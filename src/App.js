@@ -1004,20 +1004,23 @@ import NavBar from './Components/Router/NavBar';
 import PageNotFound from './Components/Router/PageNotFound';
 import User from './Components/Router/User';
 import SearchParamas from './Components/Router/SearchParamas';
+import Login from './Components/Router/Login';
+import Protected from './Components/Router/Protected';
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar /> 
+      <NavBar />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Protected Component={Home} />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<About />}></Route>
         {/* <Route path="/*" element={<PageNotFound />}></Route> */}
         {/* or re-direact */}
         <Route path="/*" element={<Navigate to="/" />}></Route>
         {/* how to use params in react */}
-        <Route path="/user/:name" element={<User/>}></Route>
-        <Route path="/filter" element={<SearchParamas/>}></Route>
+        <Route path="/user/:name" element={<User />}></Route>
+        <Route path="/filter" element={<SearchParamas />}></Route>
       </Routes>
       {/* <NavBar /> */}
     </BrowserRouter>
