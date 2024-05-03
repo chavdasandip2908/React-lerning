@@ -996,41 +996,93 @@ export default function App() {
 
 // ---------------------------------------------> React Router <----------------------------------------------------------------
 
-import React from 'react'
-import Home from "./Components/Router/Home";
-import About from "./Components/Router/About";
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import NavBar from './Components/Router/NavBar';
-import PageNotFound from './Components/Router/PageNotFound';
-import User from './Components/Router/User';
-import SearchParamas from './Components/Router/SearchParamas';
-import Login from './Components/Router/Login';
-import Protected from './Components/Router/Protected';
+// import React from 'react'
+// import Home from "./Components/Router/Home";
+// import About from "./Components/Router/About";
+// import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+// import NavBar from './Components/Router/NavBar';
+// import PageNotFound from './Components/Router/PageNotFound';
+// import User from './Components/Router/User';
+// import SearchParamas from './Components/Router/SearchParamas';
+// import Login from './Components/Router/Login';
+// import Protected from './Components/Router/Protected';
 
-function App() {
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <NavBar />
+//       <Routes>
+//         <Route path="/" element={<Protected Component={Home} />}></Route>
+//         <Route path="/login" element={<Login />}></Route>
+//         <Route path="/about" element={<About />}></Route>
+//         {/* <Route path="/*" element={<PageNotFound />}></Route> */}
+//         {/* or re-direact */}
+//         <Route path="/*" element={<Navigate to="/" />}></Route>
+//         {/* how to use params in react */}
+//         <Route path="/user/:name" element={<Protected Component={User} />}></Route>
+//         <Route path="/filter" element={<SearchParamas />}></Route>
+//       </Routes>
+//       {/* <NavBar /> */}
+//     </BrowserRouter>
+//   )
+// }
+// export default App
+
+
+//Basic Routing 
+// 1. Make 2 components
+
+import React from 'react'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+
+const Home = () => {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Protected Component={Home} />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        {/* <Route path="/*" element={<PageNotFound />}></Route> */}
-        {/* or re-direact */}
-        <Route path="/*" element={<Navigate to="/" />}></Route>
-        {/* how to use params in react */}
-        <Route path="/user/:name" element={<User />}></Route>
-        <Route path="/filter" element={<SearchParamas />}></Route>
-      </Routes>
-      {/* <NavBar /> */}
-    </BrowserRouter>
+    <div>
+      <h1>Home Page</h1>
+      <p>This is Home page of website</p>
+    </div>
   )
 }
+
+const Nav = () => {
+  return (
+    <div>
+      <Link to="/home">Home Page</Link>
+      <br />
+      <Link to="/about">About Page</Link>
+    </div>
+  )
+}
+
+const About = () => {
+  return (
+    <div>
+      <h1>About Page</h1>
+      <p>This is about page of website</p>
+
+    </div>
+  )
+}
+
+const App = () => {
+  return (
+    <div style={{ width: "100vw", textAlign: "center" }}>
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
+}
+
 export default App
 
 
-/* searchParamas Hook  */
-// searchParamas is query parameter 
+
+
 
 
 
