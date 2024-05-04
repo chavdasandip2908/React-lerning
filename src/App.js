@@ -1031,49 +1031,110 @@ export default function App() {
 
 //Basic Routing 
 // 1. Make 2 components
+// 2. 404 page
 
+// import React from 'react'
+// import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+
+// const Home = () => {
+//   return (
+//     <div>
+//       <h1>Home Page</h1>
+//       <p>This is Home page of website</p>
+//     </div>
+//   )
+// }
+
+// const Nav = () => {
+//   return (
+//     <div>
+//       <Link to="/home">Home Page</Link>
+//       <br />
+//       <Link to="/about">About Page</Link>
+//     </div>
+//   )
+// }
+
+// const About = () => {
+//   return (
+//     <div>
+//       <h1>About Page</h1>
+//       <p>This is about page of website</p>
+
+//     </div>
+//   )
+// }
+// const NotFound = () => {
+//   return (
+//     <div>
+//       <h1>404 Page</h1>
+//       <p>page not found </p>
+//     </div>
+//   )
+// }
+
+// const App = () => {
+//   return (
+//     <div style={{ width: "100vw", textAlign: "center" }}>
+//       <BrowserRouter>
+//         <Nav />
+//         <Routes>
+//           <Route path="/home" element={<Home />}></Route>
+//           <Route path="/about" element={<About />}></Route>
+//           {/* 404 page Route   */}
+//           <Route path="*" element={<NotFound />}></Route>
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   )
+// }
+
+// export default App
+
+// Call API in Reactjs
+// 1. GET method 
 import React from 'react'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-
-const Home = () => {
-  return (
-    <div>
-      <h1>Home Page</h1>
-      <p>This is Home page of website</p>
-    </div>
-  )
-}
-
-const Nav = () => {
-  return (
-    <div>
-      <Link to="/home">Home Page</Link>
-      <br />
-      <Link to="/about">About Page</Link>
-    </div>
-  )
-}
-
-const About = () => {
-  return (
-    <div>
-      <h1>About Page</h1>
-      <p>This is about page of website</p>
-
-    </div>
-  )
-}
+import { useState } from 'react';
+import { useEffect } from 'react'
 
 const App = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then(response => response.json())
+      .then(res => setData(res))
+  }, []);
+
+
   return (
-    <div style={{ width: "100vw", textAlign: "center" }}>
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-        </Routes>
-      </BrowserRouter>
+    <div>
+      <h2 style={{textAlign:"center ",width:"100vw"}}>Call API set data </h2>
+      {
+        data.map((item, index) => {
+          return (
+            <div key={index} style={{
+              paddingLeft:"1rem",
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'nowrap',
+              justifyContent: 'flex-start ',
+              alignItems: 'center',
+              gap:"1rem",
+              borderBottom:"1px solid #00000052"
+            }}>
+              <div >
+                {item.completed ?
+                  <img style={{height:"1.5rem"}} src="https://w7.pngwing.com/pngs/38/204/png-transparent-computer-icons-check-mark-true-or-false-miscellaneous-company-logo-thumbnail.png" alt="no" /> :
+                  <img style={{height:"1.5rem"}} src="https://png.pngtree.com/png-vector/20190724/ourmid/pngtree-false-free-png-png-image_1589434.jpg" alt='no' />}
+              </div>
+              <div>
+                {item.title}
+              </div>
+            </div>
+          )
+        })
+      }
     </div>
   )
 }
